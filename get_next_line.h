@@ -6,16 +6,22 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/05 08:59:30 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/06 15:03:39 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "./libft/libft.a"
-# include "/libft/libft.h"
+# include "./libft/libft.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <string.h>
 
 # define BUFF_SIZE 10
+
+int	get_next_line(const int fd, char **line);
 
 #endif

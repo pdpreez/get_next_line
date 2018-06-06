@@ -6,24 +6,41 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 07:25:52 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/05 14:08:48 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/06 17:47:51 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+
+void	copy(char **line, char *buffer, char *hold)
+{
+	int	i;
+
+	i = 0;
+	while (i < BUFF_SIZE)
+	{
+		if (buffer[i] == '\n')
+			ft_strncpy(*line, buffer, i);
+		i++;
+	}
+}
 
 int	get_next_line(const int fd, char **line)
 {
-	int			i;
 	int			read_val;
-	static char	*buffer[BUFF_SIZE];
+	char		buffer[BUFF_SIZE];
+	static char	*hold;
 
-	i = 0;
-	if (fd < 0 || line == NULL || BUFF_SIZE == 0)
-		return (-1);
-	while ((read_val = read(fd, buffer, BUFF_SIZE) != 0))
-	{
-		if (read_val < 0)
-			return (-1);
-		while (buffer[i] != '\n' && buffer[i] && i < BUFF_SIZE)
-		{
+	printf("Function call\n");
+	if (fd < 0 || BUFF_SIZE <= 0)
+		return (-2);
+	read_val = read(fd, buffer, BUFF_SIZE);
+	if (read_val <= 0)
+		return (-3);
+	if (!(*line = (char *)ft_memalloc(sizeof(char *) * BUFF_SIZE + 1)))
+		return (-4);
+	copy(line, buffer, hold);
+	printf("read_val: **%d**\n", read_val);
+	return (read_val);
+}
