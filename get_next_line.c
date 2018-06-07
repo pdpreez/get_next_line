@@ -5,42 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 07:25:52 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/06 17:47:51 by ppreez           ###   ########.fr       */
+/*   Created: 2018/06/07 11:25:43 by ppreez            #+#    #+#             */
+/*   Updated: 2018/06/07 17:33:41 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-void	copy(char **line, char *buffer, char *hold)
+int		buffline(char *buffer)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (i < BUFF_SIZE)
-	{
-		if (buffer[i] == '\n')
-			ft_strncpy(*line, buffer, i);
+	while (buffer[i] != '\n' && i <= BUFF_SIZE)
 		i++;
-	}
+	return (i);
 }
 
+void	assign(const int fd, char **line, t_list *node, char *buffer)
+{
+	char *tmp;
+
+	if (node->content == NULL)
+		tmp = ft_strdup(buffer);
+	else 
+
+
+void	readlist(const int fd, char **line, t_list *node, char *buffer)
+{
+
+	if (node == NULL)
+	{
+		node = (t_list)ft_memalloc(sizeof(t_list));
+		node->content = NULL;
+		node->content_size = NULL;
+		node->next = NULL;
+	}
+	while (node->content_size != fd && node->next != NULL)
+		node = node->next;
+	if (node->content_size == fd)
+		assign(fd, &line, node, buffer);
+	else if (node->content_size != fd && node->next == NULL)
+		ft_lstadd(buffer, fd);
+
+
+
+		
 int	get_next_line(const int fd, char **line)
 {
-	int			read_val;
-	char		buffer[BUFF_SIZE];
-	static char	*hold;
+	char			buffer[BUFF_SIZE];
+	static t_list	*node = NULL;
 
-	printf("Function call\n");
 	if (fd < 0 || BUFF_SIZE <= 0)
-		return (-2);
-	read_val = read(fd, buffer, BUFF_SIZE);
-	if (read_val <= 0)
-		return (-3);
-	if (!(*line = (char *)ft_memalloc(sizeof(char *) * BUFF_SIZE + 1)))
-		return (-4);
-	copy(line, buffer, hold);
-	printf("read_val: **%d**\n", read_val);
-	return (read_val);
-}
+		return (-1);
+	while (read(fd, buffer, BUFF_SIZE) == BUFF_SIZE)
+	{
+		readlist(fd, &line, node, buffer);
