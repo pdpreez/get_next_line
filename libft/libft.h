@@ -6,7 +6,7 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 15:14:11 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/08 16:35:29 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/12 09:29:10 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,5 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 int					ft_isspace(const char c);
 size_t				ft_wordcount(char const *s);
-size_t				ft_linelen(char *buffer, size_t n);
 
 #endif

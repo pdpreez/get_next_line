@@ -6,7 +6,7 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:05:47 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/11 18:28:10 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/12 08:07:22 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	char **line;
 	int gnlret;
 
+	gnlret = 1;
+	printf("Argc: %d\n", argc);
 	printf("File to open: %s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	printf("File descriptor: %d\n", fd);
