@@ -6,7 +6,7 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 11:25:43 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/12 17:41:44 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/13 12:49:44 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 int		assign(const int fd, char **line, t_list *node, char *buffer)
 {
 	int	i;
+	int	read_val;
 	char *str;
 
 	i = 0;
 	str = (char *)node->content;
-	//printf("str: %s\n", str);
+	printf("str: %s\n", str);
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i] == '\0')
 	{
 		if (!(read(fd, buffer, BUFF_SIZE)))
 		{
-		//	printf("Final return\n");
+			printf("Final return\n");
 			return (0);
 		}
 		node->content = ft_strjoin(node->content, buffer);
@@ -38,7 +39,7 @@ int		assign(const int fd, char **line, t_list *node, char *buffer)
 		*line = ft_strnew(i);
 		ft_strncpy(*line, node->content, i);
 		node->content = ft_strdup(node->content + (i + 1));
-		//printf("Newline return\n");
+		printf("Newline return\n");
 		return (1);
 	}
 	return (1);
@@ -48,6 +49,7 @@ int		readlist(const int fd, char **line, t_list **node, char *buffer)
 {
 	if (!(*node))
 	{
+		printf("lstnew call\n");
 		if (!(read(fd, buffer, BUFF_SIZE)))
 			return (0);
 		(*node) = ft_lstnew(buffer, BUFF_SIZE + 1);
