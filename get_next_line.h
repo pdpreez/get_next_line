@@ -6,7 +6,7 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/14 09:09:00 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/14 13:17:04 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <string.h>
 
-# define BUFF_SIZE 16
+# define BUFF_SIZE 6
 
 int					get_next_line(const int fd, char **line);
 
