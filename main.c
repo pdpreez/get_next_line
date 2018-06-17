@@ -6,7 +6,7 @@
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:05:47 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/16 13:57:09 by ppreez           ###   ########.fr       */
+/*   Updated: 2018/06/17 15:17:09 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	{
 		gnlret = get_next_line(fd, &(*line)); 
 		printf("Line to print: %s\n", *line);
-		printf("gnlret = **%d**\n", gnlret);
+		printf("gnlret = |%d|\n", gnlret);
 	}
 	printf("Finished\n\n");
 	close(fd);
