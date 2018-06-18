@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/18 15:14:28 by ppreez           ###   ########.fr       */
+/*   Created: 2018/05/24 17:01:58 by ppreez            #+#    #+#             */
+/*   Updated: 2018/05/28 10:30:48 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <string.h>
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t		i;
+	t_uchar		*dst2;
+	t_uchar		*src2;
 
-# define BUFF_SIZE 32
-
-int		get_next_line(const int fd, char **line);
-int		assign(char **line, t_list *node, char *buffer);
-
-#endif
+	i = 0;
+	dst2 = (t_uchar *)dst;
+	src2 = (t_uchar *)src;
+	if (src2 < dst2)
+	{
+		while (len > i)
+		{
+			len--;
+			dst2[len] = src2[len];
+		}
+		return (dst2);
+	}
+	else
+		while (i < len)
+		{
+			dst2[i] = src2[i];
+			i++;
+		}
+	return (dst);
+}

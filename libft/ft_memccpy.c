@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/18 15:14:28 by ppreez           ###   ########.fr       */
+/*   Created: 2018/05/23 18:29:34 by ppreez            #+#    #+#             */
+/*   Updated: 2018/05/29 14:30:26 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <string.h>
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	size_t		i;
+	t_uchar		*dst2;
+	t_uchar		*src2;
 
-# define BUFF_SIZE 32
-
-int		get_next_line(const int fd, char **line);
-int		assign(char **line, t_list *node, char *buffer);
-
-#endif
+	i = 0;
+	dst2 = (t_uchar *)dst;
+	src2 = (t_uchar *)src;
+	if (!(src || dst))
+		return (NULL);
+	while (i < n)
+	{
+		dst2[i] = src2[i];
+		if (dst2[i] == (t_uchar)c)
+			return (dst2 + i + 1);
+		i++;
+	}
+	return (NULL);
+}

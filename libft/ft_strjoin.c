@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/18 15:14:28 by ppreez           ###   ########.fr       */
+/*   Created: 2018/05/26 14:33:09 by ppreez            #+#    #+#             */
+/*   Updated: 2018/05/28 10:27:34 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <string.h>
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	len;
+	char	*new;
 
-# define BUFF_SIZE 32
-
-int		get_next_line(const int fd, char **line);
-int		assign(char **line, t_list *node, char *buffer);
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(new = (char *)ft_memalloc(len + 1)))
+		return (NULL);
+	ft_strcpy(new, s1);
+	ft_strncat(new, s2, ft_strlen(s2));
+	return (new);
+}

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppreez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 07:26:39 by ppreez            #+#    #+#             */
-/*   Updated: 2018/06/18 15:14:28 by ppreez           ###   ########.fr       */
+/*   Created: 2018/05/23 16:03:26 by ppreez            #+#    #+#             */
+/*   Updated: 2018/05/24 12:14:27 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <string.h>
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*s2;
 
-# define BUFF_SIZE 32
-
-int		get_next_line(const int fd, char **line);
-int		assign(char **line, t_list *node, char *buffer);
-
-#endif
+	i = 0;
+	s2 = s;
+	if (n != 0)
+	{
+		while (i < n)
+		{
+			s2[i] = 0;
+			i++;
+		}
+	}
+}
